@@ -38,6 +38,7 @@ API Olho Vivo (SPTrans)
 │ GOLD — schema sptrans_marts (tabelas)                    │
 │ mart_frota_hora · mart_velocidade_trecho                 │
 └──────────────────────────────────────────────────────────┘
+```
 
 ![Grafo de dependências do dbt](docs/lineage.png)
 
