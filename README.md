@@ -38,10 +38,12 @@ API Olho Vivo (SPTrans)
 │ GOLD — schema sptrans_marts (tabelas)                    │
 │ mart_frota_hora · mart_velocidade_trecho                 │
 └──────────────────────────────────────────────────────────┘
+
+
+```
 ![Grafo de dependências do dbt](docs/lineage.png)
 
 ```
-
 A API não guarda histórico: cada chamada devolve só a posição da frota naquele
 instante. Qualquer pergunta sobre velocidade, regularidade ou variação ao longo
 do dia depende de acumular observações, e é isso que o pipeline faz.
