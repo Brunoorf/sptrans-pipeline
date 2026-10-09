@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: sptrans_raw
+    schema: sptrans_raw
+    description: Camada bronze — dados crus da API Olho Vivo da SPTrans
+    tables:
+      - name: raw_posicao
+        description: Posição de cada veículo por instante de transmissão
+      - name: raw_linhas
+        description: Linhas-sentido em operação
+      - name: raw_paradas
+        description: Paradas por linha (cobertura parcial — apenas corredores)
+      - name: raw_empresas
+        description: Operadoras e área de operação
+      - name: raw_corredores
+        description: Corredores de ônibus
+      - name: raw_veiculo_empresa
+        description: Associação veículo-operadora, derivada por observação

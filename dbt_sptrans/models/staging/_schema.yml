@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: stg_linhas
+    description: Linhas-sentido com origem e destino derivados do sentido
+    columns:
+      - name: codigo_linha
+        description: Identificador da linha-sentido na SPTrans
+        tests:
+          - not_null
+          - unique
+      - name: sentido_descricao
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['ida', 'volta']
+
+  - name: stg_posicoes
+    description: Observações de posição por veículo e instante
+    columns:
+      - name: prefixo_veiculo
+        tests:
+          - not_null
+      - name: codigo_linha
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_linhas')
+                field: codigo_linha
+              config:
+                severity: warn
+      - name: tipo_dia
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['util', 'sabado', 'domingo']
+
+  - name: stg_empresas
+    columns:
+      - name: codigo_empresa
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_paradas
+    columns:
+      - name: codigo_parada
+        tests:
+          - not_null
+      - name: nome_parada
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  - name: stg_veiculo_empresa
+    columns:
+      - name: prefixo_veiculo
+        tests:
+          - not_null
+          - unique
+      - name: codigo_empresa
+        tests:
+          - relationships:
+              to: ref('stg_empresas')
+              field: codigo_empresa

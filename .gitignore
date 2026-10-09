@@ -1,0 +1,17 @@
+.env
+*.env
+!.env.example
+**/profiles.yml
+
+dbt-venv/
+venv/
+__pycache__/
+*.pyc
+
+logs/
+target/
+dbt_packages/
+.user.yml
+
+.DS_Store
+.vscode/
